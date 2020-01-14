@@ -1,10 +1,22 @@
 import React from "react";
-import { Text } from "react-native";
 import PropTypes from "prop-types";
 import Loader from "../../components/Loader";
+import styled from "styled-components/native";
+import MovieSlider from "../../components/MovieSlider";
+import { BG_COLOR } from "../../constants/Color";
+
+const Container = styled.ScrollView`
+  background-color: ${BG_COLOR};
+`;
 
 const Presenter = ({ loading, upcoming, popular, nowPlaying }) =>
-  loading ? <Loader /> : <Text>Movies</Text>;
+  loading ? (
+    <Loader />
+  ) : (
+    <Container>
+      <MovieSlider movies={nowPlaying} />
+    </Container>
+  );
 
 Presenter.propTypes = {
   loading: PropTypes.bool.isRequired,
