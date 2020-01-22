@@ -18,7 +18,7 @@ export default class extends Component {
         data: { results: popular }
       } = await tvApi.popular());
       ({
-        data: { resuluts: topRated }
+        data: { results: topRated }
       } = await tvApi.topRated());
       ({
         data: { results: airingToday }
@@ -32,7 +32,6 @@ export default class extends Component {
 
   render() {
     const { loading, popular, topRated, airingToday } = this.state;
-    console.log(topRated);
     return (
       <Presenter
         loading={loading}

@@ -23,7 +23,6 @@ export default class extends Component {
       ({
         data: { results: popular }
       } = await moviesApi.popular());
-      this.setState({ nowPlaying, upcoming, popular });
     } catch (error) {
       error = "Something wrong :(";
     } finally {
