@@ -21,6 +21,7 @@ const Presenter = ({ loading, popular, topRated, airingToday }) =>
             .filter(tv => tv.poster_path !== null)
             .map(tv => (
               <MovieItem
+                isMovie={false}
                 key={tv.id}
                 id={tv.id}
                 posterPhoto={tv.poster_path}
@@ -36,6 +37,7 @@ const Presenter = ({ loading, popular, topRated, airingToday }) =>
             .filter(tv => tv.poster_path !== null)
             .map(tv => (
               <MovieItem
+                isMovie={false}
                 key={tv.id}
                 id={tv.id}
                 posterPhoto={tv.poster_path}
@@ -46,12 +48,15 @@ const Presenter = ({ loading, popular, topRated, airingToday }) =>
         </Section>
       ) : null}
       {topRated ? (
-        <Section title="topRated">
+        <Section title="topRated" horizontal={false}>
           {topRated
             .filter(tv => tv.poster_path !== null)
             .map(tv => (
               <MovieItem
+                isMovie={false}
                 key={tv.id}
+                horizontal={true}
+                overview={tv.overview}
                 id={tv.id}
                 posterPhoto={tv.poster_path}
                 title={tv.name}
