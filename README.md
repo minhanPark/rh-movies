@@ -104,6 +104,45 @@ export default createAppContainer(MainNavigation);
 
 위와 같이 형태가 되면 탭 네비게이션과 Detail 컴포넌트가 스택 네비게이션 형태로 쌓인다.
 
+## 네비게이션에 포함이 안된느 컴포넌트에 navigation props 전달하기
+
+```js
+import { withNavigation } from "react-navigation";
+```
+
+이렇게 withNavigation을 import한다.
+
+```js
+export default withNavigation(MovieItem);
+```
+
+사용하려는 컴포넌트에 withNavigation을 감싼뒤 export한다.  
+그러면 해당 컴포넌트에서 props에 navigation을 사용할 수 있다.
+
+```js
+...
+<TouchableWithoutFeedback
+    onPress={() =>
+      navigation.navigate({
+        routeName: "Detail",
+        params: {
+          isMovie,
+          id,
+          posterPhoto,
+          backgroundPhoto: null,
+          title,
+          voteAvg,
+          overview
+        }
+      })
+    }
+  >
+  </TouchableWithoutFeedback>
+...
+```
+
+해당 앱에서는 MovieItem 컴포넌트를 누르면 Detail로 이동해야 하니 MovieItem에 withNavigation을 불러왔고, navigation.navigate를 통해서 Detail 컴포넌트로 이동시켰다.
+
 ## 완성모습
 
 ![모습1](https://drive.google.com/uc?id=1Is0RxdYGaUS4s3ugLjo8SfCgPDuKuvsc)  
